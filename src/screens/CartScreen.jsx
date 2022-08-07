@@ -20,9 +20,15 @@ function CartScreen({ location }) {
 
     useEffect(() =>{
         if(productId){
-            dispatch(addToCart(productId, qty))
+            dispatch(addToCart(productId, parseInt(qty)))
         }
     }, [dispatch, productId, qty])
+
+
+    const removeFromCartHander = (id) => {
+        
+    }
+    console.log(cartItems)
   return (
     <Row>
         <Col md={8}>
@@ -49,7 +55,7 @@ function CartScreen({ location }) {
                             <Form.Control
                             as="select"
                             value={item.qty}
-                            onChange={(e) => dispatch(addToCart(item.product, e.target.value))}
+                            onChange={(e) => dispatch(addToCart(item.product, parseInt(e.target.value)))}
                             >
                               {
                                 [...Array(item.countInStock).keys()].map((x) => (
@@ -62,6 +68,7 @@ function CartScreen({ location }) {
                                     <Button
                                     type='button'
                                     variant='light'
+                                    onClick={() => removeFromCartHander(item.product)}
                                     >
                                         <i className='fas fa-trash'></i>
                                     </Button>
@@ -73,7 +80,13 @@ function CartScreen({ location }) {
             )}
         </Col>
         <Col md={4}>
-
+            <Card>
+                <ListGroup>
+                    <ListGroup.Item>
+                        <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
+                    </ListGroup.Item>
+                </ListGroup>
+            </Card>
         </Col>
     </Row>
   )
