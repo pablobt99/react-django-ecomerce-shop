@@ -25,6 +25,7 @@ function LoginScreen() {
   useEffect(() => {
     if(userInfo){
       navigate(redirect)
+      console.log(redirect)
     }
   }, [navigate, userInfo, redirect])
 
@@ -32,6 +33,8 @@ function LoginScreen() {
     e.preventDefault()
     dispatch(login(email, password))
   }
+  console.log(email);
+  console.log(password)
 
   return (
     <FormContainer>

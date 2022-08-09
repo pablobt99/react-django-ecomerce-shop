@@ -13,7 +13,6 @@ export default function HomeScreen() {
   useEffect(() =>{
     dispatch(listProducts())
   }, [])
-  console.log(error)
 
   return (  
     <div>
