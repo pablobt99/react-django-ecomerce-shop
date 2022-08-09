@@ -33,9 +33,6 @@ function LoginScreen() {
     e.preventDefault()
     dispatch(login(email, password))
   }
-  console.log(email);
-  console.log(password)
-
   return (
     <FormContainer>
         {error && <Message variant='danger'>{error}</Message>}
