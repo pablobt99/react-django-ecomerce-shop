@@ -6,7 +6,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
 import { useNavigate } from "react-router";
-import { listUsers } from '../actions/userActions'
+import { listUsers, deleteUser } from '../actions/userActions'
 
 function UserListScreen() {
     
@@ -18,6 +18,9 @@ function UserListScreen() {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
+    const userDelete = useSelector(state => state.userDelete)
+    const { success: successDelete } = userDelete
+
     const navigate = useNavigate()
 
     useEffect(() =>{
@@ -27,10 +30,13 @@ function UserListScreen() {
             navigate('/login')
         }
         
-    }, [dispatch])
+    }, [dispatch, successDelete])
 
     const deleteHandler = (id) => {
-        console.log('DELETE:' , id)
+        if (window.confirm('Are yout sure you whant to delete this user?')){
+            dispatch(deleteUser(id))
+        }
+        
     }
 
     return (
@@ -68,7 +74,7 @@ function UserListScreen() {
                             {user.isAdmin ? (
                                 <i className='fas fa-check' style={{color: 'green'}}></i>
                             ): (
-                                <i className='fas fa-check' style={{color: 'red'}}></i>
+                                <i className='fas fa-x' style={{color: 'red'}}></i>
                             )}
                         </td>
                         <td>
