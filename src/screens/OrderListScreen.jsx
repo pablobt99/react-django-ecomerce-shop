@@ -44,6 +44,7 @@ function OrderListScreen() {
                   <th>ID</th>
                     <th>USER</th>
                     <th>DATE</th>
+                    <th>TOTAL</th>
                     <th>PAID</th>
                     <th>DELIVERED</th>
                     <th></th>  
@@ -81,7 +82,7 @@ function OrderListScreen() {
                         </td>
                         <td>
                                 <LinkContainer to={`/order/${order._id}/`}>
-                                    <Button variant='light' className='btn-sm'>
+                                    <Button variant='dark' className='btn-md'>
                                         Details
                                     </Button>
                                 </LinkContainer>
