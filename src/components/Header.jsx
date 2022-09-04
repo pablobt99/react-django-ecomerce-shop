@@ -7,6 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap'
 import { NavDropdown } from 'react-bootstrap';
+import SearchBox from './SearchBox';
 import { logout } from '../actions/userActions'
 
 
@@ -25,12 +26,14 @@ function Header() {
     <header>
         <Navbar bg="dark" variant='dark' expand="lg" collapseOnSelect>
             <Container fluid>
-            <LinkContainer to='/'>
-             <Navbar.Brand >Shop</Navbar.Brand>
-            </LinkContainer>
+              <a href='/' className='text-decoration'>
+                <Navbar.Brand >Shop</Navbar.Brand>
+              </a>
+             
             
             <Navbar.Toggle aria-controls="navbarScroll" />
              <Navbar.Collapse id="navbarScroll">
+          
           <Nav
             className="mr-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
@@ -79,15 +82,7 @@ function Header() {
 
             
           </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+          <SearchBox/>
         </Navbar.Collapse>
       </Container>
     </Navbar>
