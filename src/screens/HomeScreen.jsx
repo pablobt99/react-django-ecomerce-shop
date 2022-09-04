@@ -7,6 +7,7 @@ import Message from '../components/Message'
 import { listProducts } from '../actions/productActions'
 import { useNavigate } from "react-router";
 import { useParams } from 'react-router-dom'
+import ProductCarousel from '../components/ProductCarousel'
 
 export default function HomeScreen() {
   const dispatch = useDispatch()
@@ -21,6 +22,7 @@ export default function HomeScreen() {
 
   return (  
     <div>
+        {!keyword && <ProductCarousel/>}
         <h1>Latest Products</h1>
         {loading ? <Loader />
         : error ? <Message variant="danger">{error}</Message>
